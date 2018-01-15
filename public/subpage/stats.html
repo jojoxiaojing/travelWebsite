@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Statistics</title>
+        <meta charset="UTF-8" />
+        <!-- Bootstrap -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="assets/styles.css" rel="stylesheet" media="screen">
+        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">管理后台</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right">
+                            <li class="dropdown">
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i>李小红 <i class="caret"></i>
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a tabindex="-1" href="#">管理员资料</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a tabindex="-1" href="login.html">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav">
+                            <li class="active">
+                                <a href="#">管理主页</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">设置 <b class="caret"></b>
+
+                                </a>
+                                <ul class="dropdown-menu" id="menu1">
+                                    <li>
+                                        <a href="#">工具 <i class="icon-arrow-right"></i>
+
+                                        </a>
+                                        <ul class="dropdown-menu sub-menu">
+                                            <li>
+                                                <a href="#">报告</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">日志</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">错误</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">其他</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#">其他</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">其他</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span3" id="sidebar">
+                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                        <li>
+                            <a href="manage.html"><i class="icon-chevron-right"></i> 管理主页</a>
+                        </li>
+                        <li>
+                            <a href="calendar.html"><i class="icon-chevron-right"></i> 日程</a>
+                        </li>
+                        <li  class="active">
+                            <a href="stats.html"><i class="icon-chevron-right"></i> 网页数据</a>
+                        </li>
+                        <li>
+                            <a href="form.html"><i class="icon-chevron-right"></i> 修改饮食商家</a>
+                        </li>
+
+
+                        <li>
+                            <a href="../index.html"><span class="badge badge-success pull-right"></span> 凤凰古旅游网站</a>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <!--/span-->
+                <div class="span9" id="content">
+
+
+                    <!-- morris graph chart -->
+                    <div class="row-fluid section">
+                         <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">历史浏览数据 <small>按月</small></div>
+                                <div class="pull-right"><span class="badge badge-warning">更多</span>
+
+                                </div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span12">
+                                    <div id="hero-graph" style="height: 230px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+
+                    <!-- morris bar & donut charts -->
+                    <div class="row-fluid section">
+                         <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">广告收入</div>
+                                <div class="pull-right"><span class="badge badge-warning">更多</span>
+
+                                </div>
+                            </div>
+                            <div class="block-content collapse in">
+                                <div class="span6 chart">
+                                    <h5>广告收入</h5>
+                                    <div id="hero-bar" style="height: 250px;"></div>
+                                </div>
+                                <div class="span5 chart">
+                                    <h5>商家比例</h5>
+                                    <div id="hero-donut" style="height: 250px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+        <!--/.fluid-container-->
+        <link rel="stylesheet" href="vendors/morris/morris.css">
+
+
+        <script src="vendors/jquery-1.9.1.min.js"></script>
+        <script src="vendors/jquery.knob.js"></script>
+        <script src="vendors/raphael-min.js"></script>
+        <script src="vendors/morris/morris.min.js"></script>
+
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendors/flot/jquery.flot.js"></script>
+        <script src="vendors/flot/jquery.flot.categories.js"></script>
+        <script src="vendors/flot/jquery.flot.pie.js"></script>
+        <script src="vendors/flot/jquery.flot.time.js"></script>
+        <script src="vendors/flot/jquery.flot.stack.js"></script>
+        <script src="vendors/flot/jquery.flot.resize.js"></script>
+
+        <script src="assets/scripts.js"></script>
+        <script>
+        $(function() {
+            var data = [ ["January", 10], ["February", 8], ["March", 4], ["April", 13], ["May", 17], ["June", 9] ];
+
+            $.plot("#catchart", [ data ], {
+                series: {
+                    bars: {
+                        show: true,
+                        barWidth: 0.6,
+                        align: "center"
+                    }
+                },
+                xaxis: {
+                    mode: "categories",
+                    tickLength: 0
+                }
+            });
+
+            var data = [],
+            series = Math.floor(Math.random() * 6) + 3;
+
+            for (var i = 0; i < series; i++) {
+                data[i] = {
+                    label: "Series" + (i + 1),
+                    data: Math.floor(Math.random() * 100) + 1
+                }
+            }
+
+            $.plot('#piechart1', data, {
+                series: {
+                    pie: {
+                        show: true,
+                        radius: 1,
+                        label: {
+                            show: true,
+                            radius: 3/4,
+                            formatter: labelFormatter,
+                            background: {
+                                opacity: 0.5,
+                                color: '#000'
+                            }
+                        }
+                    }
+                },
+                legend: {
+                    show: false
+                }
+            });
+
+            $.plot('#piechart2', data, {
+                series: {
+                    pie: {
+                        show: true,
+                        radius: 1,
+                        tilt: 0.5,
+                        label: {
+                            show: true,
+                            radius: 1,
+                            formatter: labelFormatter,
+                            background: {
+                                opacity: 0.8
+                            }
+                        },
+                        combine: {
+                            color: '#999',
+                            threshold: 0.1
+                        }
+                    }
+                },
+                legend: {
+                    show: false
+                }
+            });
+
+        function euroFormatter(v, axis) {
+            return v.toFixed(axis.tickDecimals) + "€";
+        }
+
+        function doPlot(position) {
+            $.plot("#timechart", [
+                { data: oilprices, label: "Oil price ($)" },
+                { data: exchangerates, label: "USD/EUR exchange rate", yaxis: 2 }
+            ], {
+                xaxes: [ { mode: "time" } ],
+                yaxes: [ { min: 0 }, {
+                    // align if we are to the right
+                    alignTicksWithAxis: position == "right" ? 1 : null,
+                    position: position,
+                    tickFormatter: euroFormatter
+                } ],
+                legend: { position: "sw" }
+            });
+        }
+
+        doPlot("right");
+
+        });
+
+        // Morris Bar Chart
+        Morris.Bar({
+            element: 'hero-bar',
+            data: [
+                {device: '2016.11', sells: 13.6},
+                {device: '2016.12', sells: 103.7},
+                {device: '2017.1', sells: 27.5},
+                {device: '2017.2', sells: 38.0},
+                {device: '2017.3', sells: 65.5},
+                {device: '2017.4', sells: 157.1}
+            ],
+            xkey: 'device',
+            ykeys: ['sells'],
+            labels: ['广告收入'],
+            barRatio: 0.4,
+            xLabelMargin: 10,
+            hideHover: 'auto',
+            barColors: ["#3d88ba"]
+        });
+
+
+        // Morris Donut Chart
+        Morris.Donut({
+            element: 'hero-donut',
+            data: [
+                {label: '金拱门', value: 25 },
+                {label: '湖南湘菜馆', value: 40 },
+                {label: '兴湘土菜馆', value: 25 },
+                {label: '其他', value: 10 }
+            ],
+            colors: ["#30a1ec", "#76bdee", "#c4dafe"],
+            formatter: function (y) { return y + "%" }
+        });
+
+
+        // Morris Line Chart
+        var tax_data = [
+            {"period": "2017-04", "visits": 2407, "signups": 660},
+            {"period": "2017-03", "visits": 3351, "signups": 729},
+            {"period": "2017-02", "visits": 2469, "signups": 1318},
+            {"period": "2017-01", "visits": 2246, "signups": 461},
+            {"period": "2016-12", "visits": 3171, "signups": 1676},
+            {"period": "2016-11", "visits": 2155, "signups": 681},
+            {"period": "2016-10", "visits": 1226, "signups": 620},
+            {"period": "2016-09", "visits": 2245, "signups": 500}
+        ];
+        Morris.Line({
+            element: 'hero-graph',
+            data: tax_data,
+            xkey: 'period',
+            xLabels: "month",
+            ykeys: ['visits', 'signups'],
+            labels: ['游客', '浏览']
+        });
+
+
+
+
+
+
+
+
+        function labelFormatter(label, series) {
+            return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
+        }
+        </script>
+    </body>
+
+</html>

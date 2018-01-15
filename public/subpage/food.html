@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>凤凰古镇旅游</title>
+  <meta charset="UTF-8" />
+</head>
+
+<link rel="stylesheet" href="../style.css">
+<script src="../jquery-3.2.1.min.js"></script>
+<style>
+.image1{
+  border-style: solid;
+  border-width: 3px;
+  border-color: #BFBFBF;
+  left: 15%;
+  width: 20%;
+  top:230px;
+  position: absolute;
+}
+
+table {
+    border: 4px solid #BFBFBF;
+    width:70%;
+    left:15%;
+    position: absolute;
+    top:240px;
+    color: #678B3E;
+    font-family:"Arial";
+    text-align-all: center;
+}
+
+.th0{
+  font-size:20px;
+
+}
+
+.th1{
+  width: 15%;
+}
+
+.table2 {
+  border: 4px solid #BFBFBF;
+  width:70%;
+  left:15%;
+  position: absolute;
+  top:1000px;
+  color: #678B3E;
+  font-family:"Arial";
+}
+
+
+td{
+  text-align: center;
+}
+</style>
+
+<body>
+  <button ><a href="login.html">管理登陆 </a></button>
+<h1>凤凰古镇旅游</h1>
+
+<div class="border">
+  <div class="navbar">
+    <a class="greyText" href="../index.html">主页</a>
+    <a class="greyText" href="visitplace.html">旅游景点</a>
+    <a class="greenText" href="food.html">当地美食</a>
+    <a class="greyText" href="handcraft.html">手工艺品</a>
+    <a class="greyText" href="custom.html">风俗习惯</a>
+    <a class="greyText" href="festival.html">传统节日</a>
+    <a class="greyText" href="language.html">古城方言</a>
+  </div>
+</div>
+<div>
+<table>
+  <tr>
+    <th class="th1 th0">名称</th>
+    <th class="th0">特点</th>
+    <th class="th0">图片</th>
+  </tr>
+  <tr>
+    <td>凤凰凉粉</td>
+    <td>凤凰一带的居民食用凉粉有着悠久的历史。这里的人们都非常喜欢食用凉粉，它味美消暑，含有丰富的营养。据《中药大辞典》载：绿豆凉粉 有“清热解毒，治痛疽疮肿初起，烫伤，跌外伤，并解热药及酒食诸毒。</td>
+    <td><img src="../img/food01.jpg"></td>
+  </tr>
+  <tr>
+    <td>苗家酸汤</td>
+    <td>J苗家酸汤是苗家人（当地人对苗族人称呼苗家人）的传统汤菜。酸菜一般采选萝卜叶、白菜已开始发黄的叶片，在阴凉处摊摆一两天，使叶片呈金黄色，然后洗净、切碎、装坛，再用滚开的米汤和酸汤曲浸泡并靠近有热火气的地方摆放，一天一夜可成，可凉拌可做汤。
+</td>
+    <td><img src="../img/food02.jpg"></td>
+  </tr>
+  <tr>
+    <td>凤凰姜糖</td>
+    <td>姜糖是凤凰特产，手工精制而成，已有一百多年的历史，是凤凰传统的休闲食品。它有防治感冒、化食、止咳化痰、开胃生津等功效。</td>
+    <td><img src="../img/food03.jpg"></td>
+  </tr>
+  <tr>
+    <td>血粑鸭</td>
+    <td>血粑鸭是凤凰和湘西地区特色的地方菜之一，制作时将预先浸泡好的上等糯米装入碗里，宰杀鸭子时将鸭血淋入糯米浸泡均匀。等鸭血凝固后再放入锅里蒸熟，放冷后将血粑均匀切成一小方块，再用菜油煎熟。待鸭肉煮九分熟时，把原先煎熟的血粑放入鸭肉内一起烹煮，并掺合一些香料物品成金黄色即可出锅。
+</td>
+    <td><img src="../img/food04.jpg"></td>
+  </tr>
+
+</table>
+
+
+</div>
+
+
+<script>
+  try{
+    var url="/api/getStoreList";
+    $.ajax({
+      url: url,
+      type: "GET",
+      success: function(resp) {
+        console.log(resp);
+
+        var str = "";
+        resp.forEach(function (r) {
+          str = str + '<tr>\n' +
+          '    <td>' + r.title + '</td>\n' +
+          '    <td>' + r.desc + '</td>\n' +
+          '    <td><a href="' + r.url + '">官网地址</a></td>\n' +
+          '  </tr>'
+        });
+
+        str = '<div><table class="table2">\n' +
+            '  <tr>\n' +
+            '    <th class="th1 th0">推荐商家</th>\n' +
+            '    <th class="th0">评分</th>\n' +
+            '    <th class="th0">官网地址</th>\n' +
+            '  </tr>' + str + '</table></div>';
+
+        $(str).appendTo($('body'));
+    }});
+  }
+  catch(err){
+    console.log(err);
+  }
+
+</script>
+
+</body>
+</html>
